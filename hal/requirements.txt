@@ -1,0 +1,4 @@
+jedi
+sphinx
+sphinx-rtd-theme
+python-dateutil
