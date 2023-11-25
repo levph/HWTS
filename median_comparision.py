@@ -26,7 +26,7 @@ def process_netlist_name_and_limit(df_path):
 
         if match:
             # The pattern is found, extract the number from the match
-            limit = match.group(1)
+            limit = int(match.group(1))
 
     return immediate_parent_directory, limit
 
@@ -45,13 +45,16 @@ if __name__ == "__main__":
     diff_column = None
 
     if (df1_limit >= df2_limit and df2_limit != -1) or df1_limit == -1:
-        diff_column = (abs(df1['MEDIAN'] - df2['MEDIAN'])) / df1['MEDIAN']
+        diff_column = abs(df2['MEDIAN'] - df1['MEDIAN']) / df1['MEDIAN']
+        #diff_column2 = (df1['MEDIAN'] - df2['MEDIAN']) / df1['MEDIAN']
     else:
-        diff_column = (abs(df2['MEDIAN'] - df1['MEDIAN'])) / df2['MEDIAN']
+        diff_column = (df1['MEDIAN'] - df2['MEDIAN']) / df2['MEDIAN']
+        #diff_column2 = (df2['MEDIAN'] - df1['MEDIAN']) / df2['MEDIAN']
 
+    diff_column3 = abs(df2['SIZE'] - df1['SIZE'])
 
     new_df = pd.DataFrame({ 'GATE_NAME': df1['GATE_NAME'], 'GATE_TYPE': df1['GATE_TYPE'],
-                            'MEDIAN_DIFF': diff_column}).sort_values(by='MEDIAN_DIFF', ascending=False)
+                            'MEDIAN_DIFF': diff_column, 'SIZE_DIFF':diff_column3}).sort_values(by='MEDIAN_DIFF', ascending=False)
 
     with pd.option_context('display.max_rows', None, 'display.max_columns', None):  # more options can be specified also
         print(new_df)

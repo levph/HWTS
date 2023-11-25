@@ -27,6 +27,33 @@ hal_py.plugin_manager.load_all_plugins()
 gate_library_path = "libs/saed90nm_max.lib"
 
 '''
+Taken from https://stackoverflow.com/questions/3173320/text-progress-bar-in-terminal-with-block-characters
+'''
+# Print iterations progress
+def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
+    """
+    Call in a loop to create terminal progress bar
+    @params:
+        iteration   - Required  : current iteration (Int)
+        total       - Required  : total iterations (Int)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+        decimals    - Optional  : positive number of decimals in percent complete (Int)
+        length      - Optional  : character length of bar (Int)
+        fill        - Optional  : bar fill character (Str)
+        printEnd    - Optional  : end character (e.g. "\r", "\r\n") (Str)
+    """
+    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+    iter_str = str(iteration) + "/" + str(total)
+    filledLength = int(length * iteration // total)
+    bar = fill * filledLength + '-' * (length - filledLength)
+    print(f'\r{prefix} {percent}% |{bar}| {iter_str} {suffix}', end = printEnd)
+    # Print New Line on Complete
+    if iteration == total:
+        print()
+
+
+'''
     A function for determining if a gate is either a latch or FF according to saed90nm library
     - a flipflop module will contain FF in its name
     - a latch module will start with "L"
@@ -64,6 +91,7 @@ def calc_cv(input_list, bool_func):
         initial_comb_list = list(itertools.product([0, 1], repeat=num_inputs - 1))
 
     # for each index in our (eventual) random binary list
+    printProgressBar(0, num_inputs, prefix='Progress:', suffix='Complete', length=25)
     for inp in range(num_inputs):
         if initial_comb_list:
             random.shuffle(initial_comb_list)
@@ -97,6 +125,7 @@ def calc_cv(input_list, bool_func):
             i += 1
         # adding the control value at index inp to the cv list
         cv_list.append(missmatch_count/max_num_rows)
+        printProgressBar(inp+1, num_inputs, prefix='Progress:', suffix='Complete', length=25)
     return cv_list
 
 '''
@@ -183,10 +212,10 @@ if __name__ == "__main__":
         # calculates sub gates (gates that are influencing the output of the current output net) with dfs
         sub_gates = list(dfs_from_net(fanout_net[0], args.dfs_depth))
 
+        print("Calculated dfs")
+
         # calculates bool func, variables and control values
         sub_bool_func = hal_py.NetlistUtils.get_subgraph_function(fanout_net[0], sub_gates)
-        sub_bool_func = sub_bool_func.simplify()
-
         variables = list(sub_bool_func.get_variable_names())
         variables.sort()
         control_values = calc_cv(variables, sub_bool_func)

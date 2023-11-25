@@ -41,6 +41,7 @@ if __name__ == "__main__":
 
     df = pd.read_csv(args.df_path)
 
-    plt.title("median of: " + netlist_name + " with limit:" + str(limit))
-    plt.hist(df['MEDIAN'], bins=200, alpha=1)
+    fig, ax = plt.subplots(1, 1, layout="constrained")
+    ax.set_title("median of: " + netlist_name + " with limit:" + str(limit))
+    ax.hist(df['MEDIAN'], bins=1000, alpha=1)
     plt.show()
