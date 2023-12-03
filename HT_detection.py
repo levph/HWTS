@@ -18,7 +18,7 @@ import pandas as pd
 import time
 
 # necessary configuration for importing hal_py
-HAL_BASE = "hal/build/"
+HAL_BASE = "/home/lev/Documents/hal/build/"
 os.environ["HAL_BASE_PATH"] = HAL_BASE
 sys.path.append(HAL_BASE + "lib/")  # location of hal_py
 import hal_py
