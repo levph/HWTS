@@ -103,7 +103,7 @@ def calc_cv(input_list, bool_func):
         missmatch_count = 0
         i = 0
         while i < max_num_rows:
-            bin_list = list(comb_list[i])
+            bin_list = list(comb_list[i]).copy()
             bin_list.insert(inp, 0) # our rand bin list is a num_inputs-1 vector + an added cofactor
 
             # cofactor equals 0
@@ -215,6 +215,9 @@ if __name__ == "__main__":
         # calculates bool func, variables and control values
         sub_bool_func = hal_py.NetlistUtils.get_subgraph_function(fanout_net[0], sub_gates)
         variables = list(sub_bool_func.get_variable_names())
+        if len(variables) >= 100: #had to do it :(
+            sub_bool_func = sub_bool_func.simplify()
+            variables = list(sub_bool_func.get_variable_names())
         variables.sort()
 
         # prints results
@@ -231,8 +234,8 @@ if __name__ == "__main__":
             mean_cv = mean(control_values)
             median_cv = median(control_values)
 
-            print("Mean:", mean)
-            print("Median:", median, "\n")
+            print("Mean:", mean_cv)
+            print("Median:", median_cv, "\n")
 
         if not df.empty:
             df = pd.concat([df, pd.DataFrame({'GATE_NAME': gate.get_name(), 'GATE_TYPE': gate.get_type().get_name(), 'BOOL_FUNC': sub_bool_func,

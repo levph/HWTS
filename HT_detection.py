@@ -212,28 +212,35 @@ if __name__ == "__main__":
         # calculates sub gates (gates that are influencing the output of the current output net) with dfs
         sub_gates = list(dfs_from_net(fanout_net[0], args.dfs_depth))
 
-        print("Calculated dfs")
+        print("Calculated dfs") #debug
 
         # calculates bool func, variables and control values
-        sub_bool_func = hal_py.NetlistUtils.get_subgraph_function(fanout_net[0], sub_gates)
+        sub_bool_func = hal_py.NetlistUtils.get_subgraph_function(fanout_net[0], sub_gates).simplify()
         variables = list(sub_bool_func.get_variable_names())
         variables.sort()
-        control_values = calc_cv(variables, sub_bool_func)
 
         # prints results
         print("BOOLEAN FUNCTION:", sub_bool_func, "of size:", len(variables), "\nwith variable list:", variables)
-        print("CONTROL VECTOR:", control_values)
 
-        # calculating mean and median of the control value vector
-        if len(control_values):
-            print("Mean:", mean(control_values))
-            print("Median:", median(control_values), "\n")
+        control_values = []
+        mean_cv = 0
+        median_cv = 0
+        if len(variables):
+            control_values = calc_cv(variables, sub_bool_func)
+            print("CONTROL VECTOR:", control_values)
+
+            # calculating mean and median of the control value vector
+            mean_cv = mean(control_values)
+            median_cv = median(control_values)
+
+            print("Mean:", mean)
+            print("Median:", median, "\n")
 
         if not df.empty:
             df = pd.concat([df, pd.DataFrame({'GATE_NAME': gate.get_name(), 'GATE_TYPE': gate.get_type().get_name(), 'BOOL_FUNC': sub_bool_func,
-                                        'VARIABLES': [variables], 'CONTROL_VECTOR': [control_values], 'MEAN': mean(control_values), 'MEDIAN': median(control_values), 'SIZE': len(variables)})])
+                                        'VARIABLES': [variables], 'CONTROL_VECTOR': [control_values], 'MEAN': mean_cv, 'MEDIAN': median_cv, 'SIZE': len(variables)})])
         else:
             df = pd.DataFrame({'GATE_NAME': gate.get_name(), 'GATE_TYPE': gate.get_type().get_name(), 'BOOL_FUNC': sub_bool_func,
-                                        'VARIABLES': [variables], 'CONTROL_VECTOR': [control_values], 'MEAN': mean(control_values), 'MEDIAN': median(control_values), 'SIZE': len(variables)})
-    df.to_csv(csv_path)
+                                        'VARIABLES': [variables], 'CONTROL_VECTOR': [control_values], 'MEAN': mean_cv, 'MEDIAN': median_cv, 'SIZE': len(variables)})
+        df.to_csv(csv_path)
     exit(0)
