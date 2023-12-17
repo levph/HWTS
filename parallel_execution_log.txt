@@ -1,0 +1,10 @@
+Success: ./netlists/ISCAS85-netlists/c1355.v
+Success: ./netlists/ISCAS85-netlists/c1908.v
+Success: ./netlists/ISCAS85-netlists/c2670.v
+Success: ./netlists/ISCAS85-netlists/c3540.v
+Success: ./netlists/ISCAS85-netlists/c432.v
+Success: ./netlists/ISCAS85-netlists/c499.v
+Success: ./netlists/ISCAS85-netlists/c5315.v
+Success: ./netlists/ISCAS85-netlists/c6288.v
+Success: ./netlists/ISCAS85-netlists/c7552.v
+Success: ./netlists/ISCAS85-netlists/c880.v
