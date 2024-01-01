@@ -45,14 +45,13 @@ if __name__ == "__main__":
     df1 = pd.read_csv(args.df1_path)
     df2 = pd.read_csv(args.df2_path)
     diff_column = None
-
+    # denominator is the closest DFS
     if (df1_limit >= df2_limit and df2_limit != -1) or df1_limit == -1:
-        diff_column = abs(df2['MEAN'] - df1['MEAN']) / df1['MEAN']
+        diff_column = abs(df1['MEAN'] - df2['MEAN']) / df2['MEAN']
 
         # diff_column2 = (df1['MEDIAN'] - df2['MEDIAN']) / df1['MEDIAN']
     else:
-        diff_column = (df1['MEAN'] - df2['MEAN']) / df2['MEAN']
-
+        diff_column = abs(df2['MEAN'] - df1['MEAN']) / df1['MEAN']
         # diff_column2 = (df2['MEDIAN'] - df1['MEDIAN']) / df2['MEDIAN']
 
     diff_column3 = abs(df2['SIZE'] - df1['SIZE'])

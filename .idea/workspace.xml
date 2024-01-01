@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc27c29e-0bee-4137-ac9f-89693b6ca562" name="Changes" comment="checked b11,b12">
-      <change beforePath="$PROJECT_DIR$/log_itc99.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log_itc99.txt" afterDir="false" />
+    <list default="true" id="fc27c29e-0bee-4137-ac9f-89693b6ca562" name="Changes" comment="results for most iscas netlists">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c2670.v_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/c2670.v_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c3540.v_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/c3540.v_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c432.v_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/c432.v_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7552.v_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/c7552.v_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/median_comparision.py" beforeDir="false" afterPath="$PROJECT_DIR$/median_comparision.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,13 +38,14 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python.median_comparision.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;itc-testing&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.median_comparision">
     <configuration name="itc99_ht_auto" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="HWTS" />
       <option name="ENV_FILES" value="" />
@@ -62,11 +68,44 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="median_comparision" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="HWTS" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/median_comparision.py" />
+      <option name="PARAMETERS" value="output/c7552/c7552_lim2_20231213-212341.csv output/c7552/c7552_lim4_20231213-212935.csv" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.median_comparision" />
+      <item itemvalue="Python.itc99_ht_auto" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.itc99_ht_auto" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -85,11 +124,38 @@
       <option name="project" value="LOCAL" />
       <updated>1701567363089</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added new iscas netlists">
+      <option name="closed" value="true" />
+      <created>1702493433929</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702493433929</updated>
+    </task>
+    <task id="LOCAL-00003" summary="parallel automation scripts">
+      <option name="closed" value="true" />
+      <created>1702495823028</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1702495823028</updated>
+    </task>
+    <task id="LOCAL-00004" summary="results for most iscas netlists">
+      <option name="closed" value="true" />
+      <created>1702841920412</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1702841920412</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="checked b11,b12" />
-    <option name="LAST_COMMIT_MESSAGE" value="checked b11,b12" />
+    <MESSAGE value="added new iscas netlists" />
+    <MESSAGE value="parallel automation scripts" />
+    <MESSAGE value="results for most iscas netlists" />
+    <option name="LAST_COMMIT_MESSAGE" value="results for most iscas netlists" />
   </component>
 </project>
